@@ -185,7 +185,7 @@ etcdDefrag:
   chart:
     repo: https://azimuth-cloud.github.io/capi-helm-charts
     name: etcd-defrag
-    version:  # Defaults to the same version as this chart
+    version: 0.10.1
   release:
     # This should be namespace in which the etcd pods are deployed
     namespace: kube-system
