@@ -2,7 +2,7 @@ apiVersion: v2
 name: openstack-cluster
 description: Helm chart for deploying a cluster on an OpenStack cloud using Cluster API.
 type: application
-version: 0.22.0-nectar.1
+version: 0.22.0-nectar.2
 appVersion: main
 
 dependencies:

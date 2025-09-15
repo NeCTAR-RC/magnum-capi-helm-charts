@@ -19,6 +19,23 @@ spec:
   {{- if .manageSecurityGroups }}
   managedSecurityGroups:
     allowAllInClusterTraffic: {{ .allowAllInClusterTraffic }}
+    {{- if eq $.Values.apiServer.loadBalancerProvider "ovn" }}
+    workerNodesSecurityGroupRules:
+      - remoteIPPrefix: 0.0.0.0/0
+        direction: ingress
+        etherType: IPv4
+        name: Node Port (TCP, anywhere)
+        portRangeMin: 30000
+        portRangeMax: 32767
+        protocol: tcp
+      - remoteIPPrefix: 0.0.0.0/0
+        direction: ingress
+        etherType: IPv4
+        name: Node Port (UDP, anywhere)
+        portRangeMin: 30000
+        portRangeMax: 32767
+        protocol: udp
+    {{- end }}
   {{- end }}
   {{- with .externalNetworkId }}
   externalNetwork:
